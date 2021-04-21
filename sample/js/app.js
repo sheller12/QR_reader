@@ -67,6 +67,7 @@ SQR.reader = (() => {
         navigator.mediaDevices
             .getUserMedia({
                 audio: false,
+                //ここでカメラの編集可能
                 video: {
                     facingMode: {
                         exact: 'environment',
