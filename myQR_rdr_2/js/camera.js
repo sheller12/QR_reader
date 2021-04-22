@@ -4,6 +4,7 @@
 //promiseがキーワードっぽい
 function f_Camera() {
     var video = document.getElementById('video');
+    video.width = 360;
     navigator.mediaDevices = navigator.mediaDevices
     || ((navigator.mozGetUserMedia 
     || navigator.webkitGetUserMedia) ? {
