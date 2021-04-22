@@ -42,8 +42,9 @@ function _canvasUpdate(){
     if (code) {
         //やったーQRコードが見つかったよー！
         alert(code.data);
+        setTimeout(() => {_canvasUpdate()},1000);
     }
     else{
-        setTimeout(() => {_canvasUpdate()},200);z
+        setTimeout(() => {_canvasUpdate()},200);
     }
 };

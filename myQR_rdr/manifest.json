@@ -1,0 +1,7 @@
+{
+    "name":"myQR-reader",
+    "start_url":"/",
+    "icons":[
+        {"width":96,"heigit":96,"path":"image/icon1.png"}
+    ]
+}
