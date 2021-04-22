@@ -20,6 +20,8 @@ function f_Camera() {
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
             video.srcObject = stream;
+            video.setAttribute("autoplay",true);
+            video.setAttribute("muted",true);
             video.onloadedmetadata = function(e) {
                 video.play();
             };
