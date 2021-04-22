@@ -1,7 +1,17 @@
 {
-    "name":"myQR-reader",
-    "start_url":"/",
-    "icons":[
-        {"width":96,"heigit":96,"path":"image/icon1.png"}
+    "name": "myQR reader",
+    "short_name": "mQr",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "Scope": "/",
+    "start_url": "/",
+    "icons": [
+    {
+        "src": "img/icons1.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    }
     ]
 }
