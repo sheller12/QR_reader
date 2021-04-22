@@ -4,11 +4,9 @@ const video = document.getElementById("video")
 video.width = 360;
 video.height = 240;
 
-//映像の設定
-if (!navigator.mediaDevices) {
-    alert("Err");
-}
 
+alert("333");
+//映像の設定
 navigator.mediaDevices.getUserMedia({
     //映像あり
     video: {
