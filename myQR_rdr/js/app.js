@@ -1,12 +1,14 @@
 //カメラを映す
 const video = document.getElementById("video")
 
-document.body.append(video);
-
 video.width = 360;
 video.height = 240;
 
 //映像の設定
+if (!navigator.mediaDevices) {
+    alert("Err");
+}
+
 navigator.mediaDevices.getUserMedia({
     //映像あり
     video: {
@@ -19,8 +21,6 @@ navigator.mediaDevices.getUserMedia({
 }).then(stream => {
     //streamですよー。多分ストリーミング再生のストリーミングと一緒
     video.srcObject = stream;
-    video.setAttribute("autoplay", true);
-    video.setAttribute("muted", true);
     video.onloadedmetadata = () => {
         video.play()
         _canvasUpdate()
