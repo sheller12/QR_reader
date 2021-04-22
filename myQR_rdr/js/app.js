@@ -43,7 +43,7 @@ function _canvasUpdate(){
     //画像化
     const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
     //ライブラリのjsQRを使って読み取る
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
+    //const code = jsQR(imageData.data, imageData.width, imageData.height);
     if (code) {
         //やったーQRコードが見つかったよー！
         alert(code.data);
