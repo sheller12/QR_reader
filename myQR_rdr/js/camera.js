@@ -30,12 +30,13 @@ function f_Camera() {
         });
 }
 
+/*
 //canvas要素の作成
 canvas = document.getElementById("canvas");
 
 //コンテキストを取得（コンテキストとは？）
 canvasCtx = canvas.getContext("2d");
-/*
+
 //video要素の映像をcanvasに描画
 function _canvasUpdate(){
     //ちなみに、drawImage（要素,x座標,y座標,解像度width,解像度height）
