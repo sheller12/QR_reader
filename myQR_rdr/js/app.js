@@ -1,6 +1,8 @@
 //カメラを映す
 const video = document.getElementById("video")
 
+document.body.append(video);
+
 video.width = 360;
 video.height = 240;
 
