@@ -5,11 +5,17 @@ video.width = 360;
 video.height = 240;
 video.autoplay = true;
 
-function heycamera()
-{
+//direction方向ですね。反転用。
+var dir;
+
+function forward_camera(){
     navigator.mediaDevices.getUserMedia({
         //映像あり
-        video: true,
+        video: {
+            facingMode: {
+            exact: 'environment',
+            },
+        },
         //音なし
         audio: false,
     }).then(stream => {
@@ -19,9 +25,41 @@ function heycamera()
         //エラーメッセージ
         console.log(err)
     })
+    var dir = fwd;
 }
-//https://reffect.co.jp/html/javascript-webcamera
-//https://qiita.com/chelcat3/items/02c77b55d080d770530a
+
+function back_camera(){
+    navigator.mediaDevices.getUserMedia({
+        //映像あり
+        video: {
+            facingMode: "user"
+        },
+        //音なし
+        audio: false,
+    }).then(stream => {
+        //streamですよー。多分ストリーミング再生のストリーミングと一緒
+        video.srcObject = stream;
+    }).catch(err => {
+        //エラーメッセージ
+        console.log(err)
+    })
+    var dir = bck;
+}
+
+forward_camera()
+
+//反転用プログラム。できればもっと綺麗に書きたいなぁ
+function reversi(){
+    if(dir = fwd){
+        alert("forward");
+        back_camera();
+    }
+    if(dir = bck){
+        alert("back");
+        forward_camera();
+    }
+}
+
 
 
 //canvas要素の作成
@@ -33,8 +71,6 @@ canvas.height = video.height;
 canvasCtx = canvas.getContext("2d");
 
 //video要素の映像をcanvasに描画
-_canvasUpdate();
-
 function _canvasUpdate(){
     //ちなみに、drawImage（要素,x座標,y座標,解像度width,解像度height）
     canvasCtx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -48,7 +84,8 @@ function _canvasUpdate(){
         setTimeout(() => {_canvasUpdate()},1000);
     }
     else{
-        heycamera();
         setTimeout(() => {_canvasUpdate()},200);
     }
 };
+
+_canvasUpdate();
