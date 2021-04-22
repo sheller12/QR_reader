@@ -2,6 +2,7 @@
 //もう、よく分からない。
 //けど、カメラの取得方法を新しいものに変更したことで、iPhoneでも読み取れた。
 //promiseがキーワードっぽい
+alert("hey");
 function f_Camera() {
     var video = document.getElementById('video');
     video.width = 360;
