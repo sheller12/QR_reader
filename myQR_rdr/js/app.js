@@ -3,64 +3,28 @@ const video = document.getElementById("video")
 
 video.width = 360;
 video.height = 240;
-video.autoplay = true;
 
-//direction方向ですね。反転用。
-var dir;
-
-function forward_camera(){
-    navigator.mediaDevices.getUserMedia({
-        //映像あり
-        video: {
-            facingMode: {
-            exact: 'environment',
-            },
+//映像の設定
+navigator.mediaDevices.getUserMedia({
+    //映像あり
+    video: {
+        facingMode: {
+        exact: 'environment',
         },
-        //音なし
-        audio: false,
-    }).then(stream => {
-        //streamですよー。多分ストリーミング再生のストリーミングと一緒
-        video.srcObject = stream;
-    }).catch(err => {
-        //エラーメッセージ
-        console.log(err)
-    })
-    var dir = fwd;
-}
-
-function back_camera(){
-    navigator.mediaDevices.getUserMedia({
-        //映像あり
-        video: {
-            facingMode: "user"
-        },
-        //音なし
-        audio: false,
-    }).then(stream => {
-        //streamですよー。多分ストリーミング再生のストリーミングと一緒
-        video.srcObject = stream;
-    }).catch(err => {
-        //エラーメッセージ
-        console.log(err)
-    })
-    var dir = bck;
-}
-
-forward_camera()
-
-//反転用プログラム。できればもっと綺麗に書きたいなぁ
-function reversi(){
-    if(dir = fwd){
-        alert("forward");
-        back_camera();
+    },
+    //音なし
+    audio: false,
+}).then(stream => {
+    //streamですよー。多分ストリーミング再生のストリーミングと一緒
+    video.srcObject = stream;
+    video.onloadedmetadata = () => {
+        video.play()
+        _canvasUpdate()
     }
-    if(dir = bck){
-        alert("back");
-        forward_camera();
-    }
-}
-
-
+}).catch(err => {
+    //エラーメッセージ
+    console.log(err)
+})
 
 //canvas要素の作成
 canvas = document.getElementById("canvas");
@@ -87,5 +51,3 @@ function _canvasUpdate(){
         setTimeout(() => {_canvasUpdate()},200);
     }
 };
-
-_canvasUpdate();

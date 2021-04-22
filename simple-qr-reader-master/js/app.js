@@ -31,35 +31,6 @@ SQR.reader = (() => {
         }
     }
 
-    /**
-     * videoの出力をBarcodeDetectorを使用してQR解析
-     */
-    const checkQRUseBarcodeDetector = () => {
-        const barcodeDetector = new BarcodeDetector()
-        barcodeDetector
-            .detect(video)
-            .then((barcodes) => {
-                if (barcodes.length > 0) {
-                    for (let barcode of barcodes) {
-                        SQR.modal.open(barcode.rawValue)
-                    }
-                } else {
-                    setTimeout(checkQRUseBarcodeDetector, 200)
-                }
-            })
-            .catch(() => {
-                console.error('Barcode Detection failed, boo.')
-            })
-    }
-
-    /**
-     * BarcodeDetector APIを使えるかどうかで処理を分岐
-     */
-    const findQR = () => {
-        window.BarcodeDetector
-            ? checkQRUseBarcodeDetector()
-            : checkQRUseLibrary()
-    }
 
     /**
      * デバイスのカメラを起動
