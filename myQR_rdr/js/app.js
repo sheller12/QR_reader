@@ -5,32 +5,23 @@ video.width = 360;
 video.height = 240;
 video.autoplay = true;
 
-
-    navigator.mediaDevices
-        .getUserMedia({
-            audio: false,
-            video: {
-                facingMode: {
-                    exact: 'environment',
-                },
-            },
-        })
-        .then((stream) => {
-            video.srcObject = stream
-            video.onloadedmetadata = () => {
-                video.play()
-                findQR()
-            }
-        })
-        .catch(() => {
-            showUnsuportedScreen()
-        })
-
-const findQR = () => {
-    window.BarcodeDetector
-        ? checkQRUseBarcodeDetector()
-        : checkQRUseLibrary()
+function heycamera()
+{
+    navigator.mediaDevices.getUserMedia({
+        //映像あり
+        video: true,
+        //音なし
+        audio: false,
+    }).then(stream => {
+        //streamですよー。多分ストリーミング再生のストリーミングと一緒
+        video.srcObject = stream;
+    }).catch(err => {
+        //エラーメッセージ
+        console.log(err)
+    })
 }
+//https://reffect.co.jp/html/javascript-webcamera
+//https://qiita.com/chelcat3/items/02c77b55d080d770530a
 
 
 //canvas要素の作成
@@ -57,6 +48,7 @@ function _canvasUpdate(){
         setTimeout(() => {_canvasUpdate()},1000);
     }
     else{
+        heycamera();
         setTimeout(() => {_canvasUpdate()},200);
     }
 };
