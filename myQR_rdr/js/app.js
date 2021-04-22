@@ -5,19 +5,32 @@ video.width = 360;
 video.height = 240;
 video.autoplay = true;
 
-navigator.mediaDevices.getUserMedia({
-    //映像あり
-    video: true,
-    //音なし
-    audio: false,
-}).then(stream => {
-    //streamですよー。多分ストリーミング再生のストリーミングと一緒
-    video.srcObject = stream;
-}).catch(err => {
-    //エラーメッセージ
-    console.log(err)
-})
 
+    navigator.mediaDevices
+        .getUserMedia({
+            audio: false,
+            video: {
+                facingMode: {
+                    exact: 'environment',
+                },
+            },
+        })
+        .then((stream) => {
+            video.srcObject = stream
+            video.onloadedmetadata = () => {
+                video.play()
+                findQR()
+            }
+        })
+        .catch(() => {
+            showUnsuportedScreen()
+        })
+
+const findQR = () => {
+    window.BarcodeDetector
+        ? checkQRUseBarcodeDetector()
+        : checkQRUseLibrary()
+}
 
 
 //canvas要素の作成

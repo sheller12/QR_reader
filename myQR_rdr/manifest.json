@@ -1,25 +1,18 @@
 {
-    "name": "myQR reader",
-    "short_name": "mQr",
-    "theme_color": "#000000",
-    "background_color": "#ffffff",
-    "display": "standalone",
-    "orientation": "portrait",
-    "Scope": "/",
-    "start_url": "/",
-    "icons": [
-    {
-        "src": "images/icons/icon192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-    },{
-        "src": "images/icons/icon256.png",
-        "sizes": "256x256",
-        "type": "image/png"
-    },{
-        "src": "images/icons/icon512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-    }
-    ]
+    "name"              : "myQRreader",
+    "short_name"        : "mQr",
+    "description"       : "PWA化したQRコードリーダー",
+    "start_url"         : "/",
+    "display"           : "standalone",
+    "background_color"  : "#ff0000",
+    "theme_color"       : "#ff0000",
+    "icons": [{
+        "src"           : "images/icons/icon192.png",
+        "sizes"         : "192x192",
+        "type"          : "image/png"
+    }, {
+        "src"           : "images/icons/icon256.png",
+        "sizes"         : "256x256",
+        "type"          : "image/png"
+    }]
 }
