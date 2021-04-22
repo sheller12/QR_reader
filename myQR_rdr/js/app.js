@@ -17,8 +17,7 @@ navigator.mediaDevices.getUserMedia({
     //エラーメッセージ
     console.log(err)
 })
-//https://reffect.co.jp/html/javascript-webcamera
-//https://qiita.com/chelcat3/items/02c77b55d080d770530a
+
 
 
 //canvas要素の作成
