@@ -21,7 +21,7 @@ navigator.mediaDevices.getUserMedia({
         video.play()
         _canvasUpdate()
     }
-}).catch(err => {
+}).catch(() => {
     //エラーメッセージ
     console.log(err)
 })
