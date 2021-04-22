@@ -18,6 +18,8 @@ navigator.mediaDevices.getUserMedia({
     //streamですよー。多分ストリーミング再生のストリーミングと一緒
     video.srcObject = stream;
     video.onloadedmetadata = () => {
+        video.setAttribute("autoplay", true);
+        video.setAttribute("muted", true);
         video.play()
         _canvasUpdate()
     }
