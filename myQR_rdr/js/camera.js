@@ -1,5 +1,5 @@
 function openCamera() {
-    var video = document.querySelector('video');
+    var video = document.getElementById('video');
     video.width = 360;
     video.height = 240;
     navigator.mediaDevices = navigator.mediaDevices
@@ -28,8 +28,6 @@ function openCamera() {
 
 //canvas要素の作成
 canvas = document.getElementById("canvas");
-canvas.width = video.width;
-canvas.height = video.height;
 
 //コンテキストを取得（コンテキストとは？）
 canvasCtx = canvas.getContext("2d");
