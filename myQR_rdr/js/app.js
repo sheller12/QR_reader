@@ -5,7 +5,7 @@ video.width = 360;
 video.height = 240;
 video.autoplay = true;
 
-//direction方向ですね。反転用。
+//direction,方向ですね。反転用。
 var dir;
 
 function forward_camera(){
@@ -13,7 +13,7 @@ function forward_camera(){
         //映像あり
         video: {
             facingMode: {
-            exact: 'environment',
+            exact: 'environment',//正面
             },
         },
         //音なし
@@ -32,7 +32,7 @@ function back_camera(){
     navigator.mediaDevices.getUserMedia({
         //映像あり
         video: {
-            facingMode: "user"
+            facingMode: "user"//後方
         },
         //音なし
         audio: false,
@@ -47,18 +47,6 @@ function back_camera(){
 }
 
 forward_camera()
-
-//反転用プログラム。できればもっと綺麗に書きたいなぁ
-function reversi(){
-    if(dir = fwd){
-        alert("forward");
-        back_camera();
-    }
-    if(dir = bck){
-        alert("back");
-        forward_camera();
-    }
-}
 
 
 
