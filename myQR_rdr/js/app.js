@@ -17,15 +17,15 @@ navigator.mediaDevices.getUserMedia({
 }).then(stream => {
     //streamですよー。多分ストリーミング再生のストリーミングと一緒
     video.srcObject = stream;
+    video.setAttribute("autoplay", true);
+    video.setAttribute("muted", true);
     video.onloadedmetadata = () => {
-        video.setAttribute("autoplay", true);
-        video.setAttribute("muted", true);
         video.play()
         _canvasUpdate()
     }
 }).catch(() => {
     //エラーメッセージ
-    console.log(err)
+    console.log("err")
 })
 
 //canvas要素の作成
@@ -43,7 +43,7 @@ function _canvasUpdate(){
     //画像化
     const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
     //ライブラリのjsQRを使って読み取る
-    //const code = jsQR(imageData.data, imageData.width, imageData.height);
+    const code = jsQR(imageData.data, imageData.width, imageData.height);
     if (code) {
         //やったーQRコードが見つかったよー！
         alert(code.data);
