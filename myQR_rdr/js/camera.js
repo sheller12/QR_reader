@@ -1,5 +1,7 @@
 function openCamera() {
     var video = document.querySelector('video');
+    video.width = 360;
+    video.height = 240;
     navigator.mediaDevices = navigator.mediaDevices
     || ((navigator.mozGetUserMedia 
     || navigator.webkitGetUserMedia) ? {
