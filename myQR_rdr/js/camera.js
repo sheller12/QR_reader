@@ -4,6 +4,7 @@
 //promiseがキーワードっぽい
 function f_Camera() {
     var video = document.getElementById('video');
+    video.width = 360;
     navigator.mediaDevices = navigator.mediaDevices
     || ((navigator.mozGetUserMedia 
     || navigator.webkitGetUserMedia) ? {
@@ -42,15 +43,15 @@ function _canvasUpdate(){
     //画像化
     const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
     //ライブラリのjsQRを使って読み取る
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
-    if (code) {
-        //やったーQRコードが見つかったよー！
-        alert(code.data);
-        setTimeout(() => {_canvasUpdate()},1000);
-    }
-    else{
-        setTimeout(() => {_canvasUpdate()},200);
-    }
+    //const code = jsQR(imageData.data, imageData.width, imageData.height);
+    //if (code) {
+    //    //やったーQRコードが見つかったよー！
+    //    alert(code.data);
+    //    setTimeout(() => {_canvasUpdate()},1000);
+    //}
+    //else{
+    //    setTimeout(() => {_canvasUpdate()},200);
+    //}
 };
 
 _canvasUpdate();
