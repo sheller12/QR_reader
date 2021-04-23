@@ -4,6 +4,8 @@ let gCurrentCameraFacingMode = FACING_MODE_ENVIRONMENT;
 
 //ビデオ要素とりまーす
 const video = document.querySelector( "#video" );
+video.width = 360;
+video.height = 240;
 
 //カメラ映像をストリーミングしまーす
 function startStreamingVideo(){
