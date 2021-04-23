@@ -20,7 +20,7 @@ startStreamingVideo();
 
 //反転
 function flipCamera(){
-    if(dis = "environment"){
+    if(dis === "environment"){
         var dis = "user";
     }
     else{
