@@ -6,9 +6,10 @@
         <link rel="apple-touch-icon" href="icon.png" sizes="192x192"-->
     </head>
 
-    <body onload="openCamera();">
-        <video id = "video" autoplay playsinline></video>
+    <body onload="startStremingVideo();">
+        <video id = "video" autoplay playsinline muted></video>
         <canvas id = "canvas" style = "display:none"></canvas>
+        <button onclick = "flipCamera();">反転</button>
     </body>
 
     <script src="js/jsQR.js"></script>
@@ -22,4 +23,5 @@
             });
         }
     </script-->
+    <script src="js/QRrdr.js"></script>
 </html>

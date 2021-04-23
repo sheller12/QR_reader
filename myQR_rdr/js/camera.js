@@ -1,53 +1,30 @@
-function openCamera() {
-    var video = document.getElementById('video');
-    video.width = 360;
-    video.height = 240;
-    navigator.mediaDevices = navigator.mediaDevices
-    || ((navigator.mozGetUserMedia 
-    || navigator.webkitGetUserMedia) ? {
-        getUserMedia: function(c) {
-            return new Promise(function(y, n) {
-                (navigator.mozGetUserMedia ||
-                navigator.webkitGetUserMedia).call(navigator, c, y, n);
-            });
-        }
-    } : null);
-    var constraints = { video: { facingMode: 'environment', width: 1280, height: 720 } };
-    navigator.mediaDevices.getUserMedia(constraints)
-        .then(function(stream) {
+var dis = "environment";
+
+
+
+// Video element
+const video = document.querySelector( "#video" );
+
+// On Streaming
+function startStreamingVideo(){
+if( navigator.mediaDevices.getUserMedia ){
+    navigator.mediaDevices.getUserMedia( { 
+            video: { facingMode: dis } 
+        } )
+        .then( ( stream ) => {
             video.srcObject = stream;
-            video.onloadedmetadata = function(e) {
-                video.play();
-            };
-        })
-        .catch(function(err) {
-            console.log(err);
-        });
+        } );
+    }
 }
+startStreamingVideo();
 
-
-//canvas要素の作成
-canvas = document.getElementById("canvas");
-
-//コンテキストを取得（コンテキストとは？）
-canvasCtx = canvas.getContext("2d");
-
-//video要素の映像をcanvasに描画
-function _canvasUpdate(){
-    //ちなみに、drawImage（要素,x座標,y座標,解像度width,解像度height）
-    canvasCtx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    //画像化
-    const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
-    //ライブラリのjsQRを使って読み取る
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
-    if (code) {
-        //やったーQRコードが見つかったよー！
-        alert(code.data);
-        setTimeout(() => {_canvasUpdate()},1000);
+//反転
+function flipCamera(){
+    if(dis = "environment"){
+        var dis = "user";
     }
     else{
-        setTimeout(() => {_canvasUpdate()},200);
+        var dis = "environment";
     }
-};
-
-_canvasUpdate();
+    startStreamingVideo();
+}
