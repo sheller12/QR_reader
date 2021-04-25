@@ -10,7 +10,7 @@ function _canvasUpdate(){
     canvasCtx.drawImage(video, 0, 0, canvas.width, canvas.height);
     //画像化
     const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
-    //ライブラリのjsQRを使って読み取る
+    //ライブラリのjsQRを使って読み取る。code内に結果が帰ってくる。
     const code = jsQR(imageData.data, imageData.width, imageData.height);
     if (code) {
         //やったーQRコードが見つかったよー！
